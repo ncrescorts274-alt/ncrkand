@@ -226,8 +226,65 @@ body {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--white);
     padding: 150px 20px 100px;
-    text-align: center;
     margin-top: 70px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: fadeInLeft 1s ease-out;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover img {
+    transform: scale(1.05);
+}
+
+.hero-content {
+    text-align: left;
+    animation: fadeInRight 1s ease-out;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .hero-content h1 {
@@ -263,7 +320,7 @@ body {
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin-top: 1rem;
 }
@@ -875,6 +932,20 @@ section h2 {
         transform: rotate(-45deg) translate(7px, -6px);
     }
 
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .hero-image img {
+        height: 400px;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
     .hero-content h1 {
         font-size: 2rem;
     }
@@ -904,6 +975,7 @@ section h2 {
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        justify-content: center;
     }
 
     .hero-buttons .cta-button {
@@ -943,6 +1015,19 @@ section h2 {
 @media (max-width: 480px) {
     .hero {
         padding: 120px 20px 80px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .hero-image img {
+        height: 300px;
+    }
+
+    .hero-content {
+        text-align: center;
     }
 
     .hero-content h1 {
